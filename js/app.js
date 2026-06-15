@@ -1,10 +1,11 @@
-// --- APPLICATION DE RÉVISION ADAPTATIVE ITIL 4 ---
+// --- APPLICATION DE RÉVISION ADAPTATIVE ITIL 5 ---
+// L'import pointe strictement vers le fichier situé dans le même dossier js/
 import { 
     updateNiveauAdaptatif, 
     selectionnerQuestionsAdaptatives, 
     getNiveauActuel, 
     getMessageMotivation 
-} from './jsadaptive-engine.js'; // Ajusté avec le nom exact de votre fichier corrigé
+} from './adaptive-engine.js'; 
 
 const AppState = {
     data: null,
@@ -27,7 +28,8 @@ function initLocalStorage() {
 
 async function loadPedagogicalData() {
     try {
-        const response = await fetch('data/troisieme.json');
+        // Le fetch s'exécute depuis la racine (index.html) donc on pointe vers ./data/
+        const response = await fetch('./data/troisieme.json');
         if (!response.ok) throw new Error("Fichier introuvable");
         AppState.data = await response.json();
         
@@ -76,7 +78,7 @@ function renderDashboardHome() {
     const container = document.getElementById("app-view-container");
     container.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h2>Domaines d'Examen</h2>
+            <h2>Domaines d'Examen ITIL 5</h2>
             <button id="main-infini-btn" class="btn-primary">🚀 Grand Test Aléatoire</button>
         </div>
         ${AppState.data.pieges_classiques ? `
@@ -104,7 +106,6 @@ function renderDashboardHome() {
             <div style="background:#E2E8F0; height:6px; border-radius:3px; overflow:hidden;"><div style="background:${mat.couleur || 'var(--color-primary)'}; width:${pct}%; height:100%;"></div></div>
         `;
         card.addEventListener("click", () => {
-            // Synchronise le menu de gauche quand on clique sur une carte de l'accueil
             const menuLink = document.querySelector(`.nav-item[data-id="${mat.id}"]`);
             if (menuLink) {
                 document.querySelectorAll(".nav-item").forEach(el => el.classList.remove("active"));
@@ -129,7 +130,6 @@ function renderMatiereView(matId) {
         <div class="chapitres-list"></div>
     `;
     document.getElementById("back-btn").addEventListener("click", () => {
-        // Remet le bouton Accueil actif lors du retour arrière
         document.querySelectorAll(".nav-item").forEach(el => el.classList.remove("active"));
         document.getElementById("btn-home").classList.add("active");
         renderDashboardHome();
