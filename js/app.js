@@ -232,8 +232,9 @@ function startQuizAdaptatif(chapitre) {
     
     const questionsSelectionnees = selectionnerQuestionsAdaptatives(chapitre.quiz, chapitre.id, 5);
 
+    // FIX : Suppression du point en trop devant chapitre.id
     AppState.currentQuiz = {
-        chapitreId: .chapitre.id,
+        chapitreId: chapitre.id,
         questions: questionsSelectionnees,
         currentIndex: 0,
         score: 0,
