@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RévisBrevet 2026</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <main class="main-content">
+      
+      <section id="home-screen" class="view-section">
+        <div class="mobile-header">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Objectif Diplôme</span>
+            <h1 style="margin: 0; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em;">Brevet des Collèges</h1>
+          </div>
+          <button id="btn-mode-automatismes" class="badge" style="border: none; cursor: pointer; background: var(--color-primary); color: white; padding: 8px 14px; border-radius: 10px;">
+            <svg style="width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2.5;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Automatismes
+          </button>
+        </div>
+
+        <div id="lacunes-box" class="card hidden" style="background: #FFF7ED; border-color: #FFEDD5; border-left: 4px solid var(--color-warning);">
+          <p id="lacunes-text" style="margin: 0; font-size: 0.85rem; color: #9A3412; line-height: 1.5;"></p>
+        </div>
+
+        <div class="card" id="coverage-dashboard-card">
+          <div id="coverage-dashboard"></div>
+        </div>
+
+        <div id="matieres-container"></div>
+      </section>
+
+      <section id="pre-quiz-screen" class="view-section hidden">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <button onclick="goHome()" style="background: none; border: none; padding: 4px; cursor: pointer; color: var(--text-secondary);" aria-label="Retour à l'accueil">
+            <svg style="width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:2.5;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          </button>
+          <span id="pre-quiz-theme" class="badge">Thème</span>
+        </div>
+
+        <h2 id="pre-quiz-title" style="margin: 0 0 24px 0; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em;">Titre du Chapitre</h2>
+
+        <div class="card">
+          <h4 style="margin: 0 0 10px 0; font-size: 0.85rem; text-transform: uppercase; color: var(--color-primary); letter-spacing: 0.05em;">L'essentiel du cours</h4>
+          <p id="pre-quiz-cours-text" style="margin: 0; font-size: 0.9rem; color: var(--text-primary); line-height: 1.55; white-space: pre-line;"></p>
+        </div>
+
+        <div id="pre-quiz-support-card" class="card support-text-card hidden">
+          <h4 style="margin: 0 0 10px 0; font-size: 0.85rem; text-transform: uppercase; color: var(--color-accent); letter-spacing: 0.05em; font-style: normal;">📖 Texte support</h4>
+          <p id="pre-quiz-support-text" style="margin: 0;"></p>
+        </div>
+
+        <div class="card" style="background: #FFF5F5; border-color: #FED7D7;">
+          <h4 style="margin: 0 0 8px 0; font-size: 0.85rem; text-transform: uppercase; color: var(--color-danger); letter-spacing: 0.05em;">Le piège du Brevet</h4>
+          <p id="pre-quiz-piege-text" style="margin: 0; font-size: 0.88rem; color: #9B1C1C; line-height: 1.5;"></p>
+        </div>
+
+        <p style="font-size: 0.75rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.02em; text-align: center; margin: 28px 0 12px 0;">Niveau d'entraînement :</p>
+        
+        <div class="quiz-level-container">
+          <button id="btn-lvl-1" class="btn-lvl-select" style="background-color: var(--color-success);">
+            <span class="lvl-num">Niv 1</span>
+            <span class="lvl-label">Fondations</span>
+          </button>
+          <button id="btn-lvl-2" class="btn-lvl-select" style="background-color: var(--color-warning);">
+            <span class="lvl-num">Niv 2</span>
+            <span class="lvl-label">Application</span>
+          </button>
+          <button id="btn-lvl-3" class="btn-lvl-select" style="background-color: var(--color-danger);">
+            <span class="lvl-num">Niv 3</span>
+            <span class="lvl-label">Brevet</span>
+          </button>
+        </div>
+
+        <button id="btn-open-exercice" class="btn-secondary hidden" style="margin-top: 14px; gap: 10px;">
+          <svg style="width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2;" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          S'entraîner sur un sujet rédigé
+        </button>
+      </section>
+
+      <section id="quiz-screen" class="view-section hidden">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <span id="quiz-progress-text" style="font-size: 0.8rem; font-weight: 700; color: var(--text-secondary);">Question 1 / 3</span>
+          <span id="quiz-timer" class="badge" style="background: #E2E8F0; color: var(--text-primary); display: none;">⏱️ 45s</span>
+          <button id="quiz-close" style="background: none; border: none; padding: 4px; cursor: pointer; color: var(--text-secondary);" aria-label="Quitter le quiz">
+            <svg style="width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2.5;" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div style="width: 100%; height: 6px; background: var(--border-color); border-radius: 3px; margin-bottom: 28px; overflow: hidden;">
+          <div id="quiz-progress-bar" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 0.3s ease;"></div>
+        </div>
+
+        <button id="quiz-support-toggle" class="quiz-support-toggle hidden">📖 Revoir le texte support</button>
+        <div id="quiz-support-text-box" class="quiz-support-text-box hidden"></div>
+
+        <h3 id="quiz-question-text" style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); line-height: 1.5; margin: 0 0 28px 0;">Énoncé ?</h3>
+
+        <div id="quiz-options-container" style="display: flex; flex-direction: column;"></div>
+
+        <div id="quiz-explanation-box" class="explanation-box hidden">
+          <b id="explanation-status" style="font-size: 0.95rem;"></b>
+          <span id="explanation-text" style="font-size: 0.88rem; line-height: 1.45;"></span>
+        </div>
+
+        <button id="quiz-next" class="btn-primary" style="margin-top: 28px;" disabled>Question suivante ➡️</button>
+      </section>
+
+      <section id="open-exercise-screen" class="view-section hidden">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <span id="open-ex-title" style="font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); max-width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Chapitre</span>
+          <button id="btn-close-exercise" style="background: none; border: none; padding: 4px; cursor: pointer; color: var(--text-secondary);" aria-label="Quitter l'exercice">
+            <svg style="width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2.5;" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div class="card">
+          <h4 style="margin:0 0 10px 0; font-size:0.8rem; text-transform:uppercase; color:var(--color-accent); letter-spacing:0.04em;">Sujet d'entraînement rédigé</h4>
+          <p id="open-ex-enonce" style="margin:0; font-size:0.95rem; line-height:1.55; font-weight:600; color:var(--text-primary);"></p>
+        </div>
+
+        <textarea id="open-ex-textarea" placeholder="Rédige ton raisonnement ici au brouillon pour te prêter au jeu..." style="width:100%; height:140px; border:1px solid var(--border-color); border-radius:14px; padding:14px; font-family:inherit; font-size:0.9rem; box-sizing:border-box; resize:none; margin-bottom:20px; outline:none; transition: var(--transition-smooth); background: white; box-shadow: var(--shadow-soft-inset);"></textarea>
+
+        <button id="btn-validate-open-ex" class="btn-primary">Vérifier mon raisonnement 🔍</button>
+
+        <div id="open-ex-correction-box" class="card hidden" style="margin-top:20px; border-color:var(--color-primary); background:#F8FAFC;">
+          <h4 style="margin:0 0 6px 0; font-size:0.9rem; color:var(--color-primary);">Grille d'Auto-Évaluation</h4>
+          <p style="margin:0 0 16px 0; font-size:0.8rem; color:var(--text-secondary);">Coche les éléments validés sur ton brouillon :</p>
+          <div id="open-ex-critere-list" style="display:flex; flex-direction:column; gap:10px;"></div>
+          <button id="btn-finish-open-ex" class="btn-primary" style="margin-top:20px; background-color:#0F172A; box-shadow:none;">Enregistrer mon bilan</button>
+        </div>
+      </section>
+
+      <section id="flashcards-screen" class="view-section hidden">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <span id="flashcard-meta" class="badge">Matière • Chapitre</span>
+        </div>
+
+        <div class="flashcard-perspective">
+          <div id="flashcard-card-box" class="flashcard-card">
+            <div class="flashcard-face flashcard-front">
+              <div class="header-icon-box" style="margin-bottom:16px; background:#FEF3C7; color:var(--color-warning);">
+                <svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <p id="flashcard-front-text" style="margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--text-primary);"></p>
+              <span style="position: absolute; bottom: 20px; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em;">👉 Tapoter pour retourner</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p id="flashcard-back-text" style="margin: 0; font-size: 0.95rem; font-weight: 500; text-align: left; line-height: 1.6;"></p>
+              <span style="position: absolute; bottom: 20px; font-size: 0.72rem; font-weight: 700; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.06em;">↩️ Tapoter pour revenir</span>
+            </div>
+          </div>
+        </div>
+
+        <button id="flashcard-next" class="btn-primary btn-next-flashcard">Suivante ➡️</button>
+      </section>
+
+      <section id="oral-screen" class="view-section hidden">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <button onclick="goHome()" style="background: none; border: none; padding: 4px; cursor: pointer; color: var(--text-secondary);" aria-label="Retour à l'accueil">
+            <svg style="width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:2.5;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          </button>
+          <span class="badge">Oral de soutenance</span>
+        </div>
+
+        <h2 style="margin: 0 0 20px 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.01em;">🎤 Simulateur de soutenance</h2>
+
+        <div class="card">
+          <h4 style="margin:0 0 12px 0; font-size:0.8rem; text-transform:uppercase; color:var(--color-primary); letter-spacing:0.04em;">Chronomètre (durée réelle : 15 min)</h4>
+          <div id="oral-timer-display" class="oral-timer-display">15:00</div>
+          <button id="btn-oral-timer-toggle" class="btn-primary">▶️ Démarrer la simulation (15 min)</button>
+        </div>
+
+        <div class="card">
+          <h4 style="margin:0 0 12px 0; font-size:0.8rem; text-transform:uppercase; color:var(--color-accent); letter-spacing:0.04em;">Questions surprises du jury</h4>
+          <div id="oral-question-text" class="oral-question-box">Appuie sur « Tirer une question » pour t'entraîner.</div>
+          <button id="btn-oral-tirer-question" class="btn-secondary">🎲 Tirer une question</button>
+        </div>
+
+        <h4 style="margin:24px 0 12px 0; font-size:0.85rem; text-transform:uppercase; color:var(--text-secondary); letter-spacing:0.05em;">Méthode en 5 étapes</h4>
+        <div id="oral-methode-list"></div>
+      </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+      <button id="nav-home" class="nav-item active">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z"/></svg>
+        <span>Cours</span>
+      </button>
+      <button id="nav-flashcards" class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+        <span>Flashcards</span>
+      </button>
+      <button id="nav-oral" class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+        <span>Oral</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

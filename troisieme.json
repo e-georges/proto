@@ -1,0 +1,1512 @@
+{
+  "meta": {
+    "exam": "Diplôme National du Brevet (DNB)",
+    "session": "2026",
+    "niveau": "Troisième",
+    "version": "6.0-Architecture-Couverture-Pilotee",
+    "derniere_maj": "2026-06-20",
+    "note_honnetete": "Cette base de contenu suit une architecture de couverture pilotée par le référentiel officiel (cf. champ referentiel_officiel de chaque matière). Elle n'est PAS encore exhaustive : chaque sous-thème officiel est listé et marqué comme couvert ou non par au moins un chapitre. Le tableau de bord 'Couverture du programme' affiché sur l'écran d'accueil reflète l'état réel, pas une promesse marketing."
+  },
+  "matieres": [
+    {
+      "id": "maths",
+      "label": "Mathématiques",
+      "emoji": "📐",
+      "categorie": "Logique & Calcul",
+      "referentiel_officiel": [
+        {
+          "id": "rm1",
+          "label": "Arithmétique (nombres premiers, PGCD)"
+        },
+        {
+          "id": "rm2",
+          "label": "Calcul littéral et équations"
+        },
+        {
+          "id": "rm3",
+          "label": "Racines carrées et puissances"
+        },
+        {
+          "id": "rm4",
+          "label": "Proportionnalité et pourcentages d'évolution"
+        },
+        {
+          "id": "rm5",
+          "label": "Fonctions linéaires et affines"
+        },
+        {
+          "id": "rm6",
+          "label": "Statistiques"
+        },
+        {
+          "id": "rm7",
+          "label": "Probabilités"
+        },
+        {
+          "id": "rm8",
+          "label": "Aires, volumes et conversions"
+        },
+        {
+          "id": "rm9",
+          "label": "Vitesses moyennes et grandeurs composées"
+        },
+        {
+          "id": "rm10",
+          "label": "Théorèmes de Pythagore et Thalès"
+        },
+        {
+          "id": "rm11",
+          "label": "Trigonométrie dans le triangle rectangle"
+        },
+        {
+          "id": "rm12",
+          "label": "Géométrie dans l'espace (solides, sections)"
+        },
+        {
+          "id": "rm13",
+          "label": "Transformations (symétries, translations, rotations)"
+        },
+        {
+          "id": "rm14",
+          "label": "Algorithmique et programmation"
+        }
+      ],
+      "chapitres": [
+        {
+          "id": "m1",
+          "titre": "Arithmétique & Nombres premiers",
+          "theme": "Nombres et Calculs",
+          "couvre": [
+            "rm1"
+          ],
+          "cours": "Un nombre premier n'a que deux diviseurs : 1 et lui-même. Tout nombre entier supérieur à 2 se décompose de manière unique en produit de facteurs premiers.",
+          "piege": "Le nombre 1 n'est pas premier. Le nombre 2 est le seul nombre premier pair.",
+          "exercice_ouvert": {
+            "enonce": "Un artisan souhaite répartir 114 pralines et 190 truffes dans des paquets identiques sans qu'il ne reste de chocolat. Quel est le nombre maximal de paquets possibles ? Justifie.",
+            "criteres": [
+              "J'ai mentionné la recherche du PGCD ou l'utilisation des diviseurs communs.",
+              "J'ai décomposé les deux nombres en facteurs premiers.",
+              "J'ai trouvé la bonne réponse : 38 paquets.",
+              "J'ai calculé le nombre exact de chocolats par paquet."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Lequel de ces nombres est premier ?",
+              "options": [
+                "15",
+                "21",
+                "29",
+                "35"
+              ],
+              "bonne_reponse": 2,
+              "explication": "29 n'est divisible que par 1 et lui-même."
+            },
+            {
+              "niveau": 2,
+              "enonce": "La décomposition de 24 est :",
+              "options": [
+                "2×12",
+                "3×8",
+                "2³×3",
+                "4×6"
+              ],
+              "bonne_reponse": 2,
+              "explication": "2×2×2×3 = 24 et tous les facteurs sont premiers."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Si PGCD(a, b) = 1, alors a et b sont :",
+              "options": [
+                "Premiers entre eux",
+                "Égaux",
+                "Pairs",
+                "Multiples"
+              ],
+              "bonne_reponse": 0,
+              "explication": "C'est la définition de deux nombres premiers entre eux."
+            }
+          ]
+        },
+        {
+          "id": "m2",
+          "titre": "Théorèmes de Pythagore & Thalès",
+          "theme": "Géométrie",
+          "couvre": [
+            "rm10"
+          ],
+          "cours": "Pythagore s'utilise dans un triangle rectangle pour calculer une longueur (BC² = AB² + AC²). Thalès s'utilise avec des droites parallèles pour calculer des proportions de longueurs.",
+          "piege": "Oublier de citer que les droites sont parallèles (Thalès) ou que le triangle est rectangle (Pythagore).",
+          "exercice_ouvert": {
+            "enonce": "Sur une figure de type Thalès, les droites (AB) et (CD) sont parallèles. On donne OA=3cm, OC=5cm, OB=4cm. Calcule OD en justifiant la rédaction.",
+            "criteres": [
+              "J'ai vérifié et cité l'alignement des points.",
+              "J'ai cité les droites parallèles.",
+              "J'ai écrit l'égalité des trois rapports de Thalès.",
+              "J'ai effectué le produit en croix et trouvé OD = 6,67 cm."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Dans quel type de triangle applique-t-on la trigonométrie ou Pythagore ?",
+              "options": [
+                "Isocèle",
+                "Rectangle",
+                "Équilatéral",
+                "Quelconque"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Uniquement dans un triangle rectangle."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Si un triangle a des côtés de 3cm, 4cm, et 5cm, il est :",
+              "options": [
+                "Rectangle",
+                "Isocèle",
+                "Quelconque",
+                "Plat"
+              ],
+              "bonne_reponse": 0,
+              "explication": "Car 3²+4²=5² (9+16=25), d'après la réciproque de Pythagore."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Pour utiliser Thalès, que doivent impérativement être deux des droites ?",
+              "options": [
+                "Perpendiculaires",
+                "Sécantes",
+                "Parallèles",
+                "Confondues"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Les droites doivent être parallèles pour conserver les proportions."
+            }
+          ]
+        },
+        {
+          "id": "m3",
+          "titre": "Calcul littéral & Équations",
+          "theme": "Nombres et Calculs",
+          "couvre": [
+            "rm2"
+          ],
+          "cours": "Développer c'est transformer un produit en somme (distributivité). Factoriser c'est l'inverse. Une équation-produit nul (A × B = 0) implique que A = 0 ou B = 0.",
+          "piege": "Les erreurs de signes lors du développement, notamment avec le signe moins devant une parenthèse.",
+          "exercice_ouvert": {
+            "enonce": "Résous l'équation suivante : (2x - 4)(x + 7) = 0. Indique clairement les étapes.",
+            "criteres": [
+              "J'ai écrit qu'un produit de facteurs est nul si l'un des facteurs est nul.",
+              "J'ai posé les deux sous-équations séparées : 2x - 4 = 0 et x + 7 = 0.",
+              "J'ai correctement isolé x dans les deux cas.",
+              "J'ai conclu avec les deux solutions exactes : x = 2 et x = -7."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Développer l'expression : 3(x + 2)",
+              "options": [
+                "3x + 2",
+                "3x + 6",
+                "x + 6",
+                "3x² + 6"
+              ],
+              "bonne_reponse": 1,
+              "explication": "3×x + 3×2 = 3x + 6."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Quelle est la solution de 2x - 6 = 0 ?",
+              "options": [
+                "x = -3",
+                "x = 3",
+                "x = 6",
+                "x = 2"
+              ],
+              "bonne_reponse": 1,
+              "explication": "2x = 6 donc x = 6/2 = 3."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Factoriser x² - 9 donne :",
+              "options": [
+                "(x-3)²",
+                "(x+3)²",
+                "(x-3)(x+3)",
+                "3x(x-3)"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Identité remarquable a² - b² = (a-b)(a+b)."
+            }
+          ]
+        },
+        {
+          "id": "m4",
+          "titre": "Fonctions (Linéaires, Affines, Graphiques)",
+          "theme": "Algèbre",
+          "couvre": [
+            "rm5"
+          ],
+          "cours": "Une fonction linéaire s'écrit f(x) = ax (droite passant par l'origine, situation de proportionnalité). Une fonction affine s'écrit f(x) = ax + b.",
+          "piege": "Confondre l'image (calculer f(x) à partir de x) et l'antécédent (trouver x tel que f(x) = nombre).",
+          "exercice_ouvert": {
+            "enonce": "Soit la fonction affine f(x) = 3x - 5. Calcule l'image de 2, puis détermine l'antécédent de 4 par f.",
+            "criteres": [
+              "J'ai calculé l'image en remplaçant x par 2 : f(2) = 3(2) - 5 = 1.",
+              "J'ai posé l'équation pour l'antécédent : 3x - 5 = 4.",
+              "J'ai résolu l'équation : 3x = 9.",
+              "J'ai trouvé l'antécédent : x = 3."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "La représentation graphique d'une fonction linéaire est :",
+              "options": [
+                "Une courbe quelconque",
+                "Une droite passant par l'origine",
+                "Une droite ne passant pas par l'origine",
+                "Une parabole"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Le coefficient induit une proportionnalité donc une droite coupant l'origine."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Pour f(x) = 4x, quelle est l'image de -2 ?",
+              "options": [
+                "-8",
+                "8",
+                "-2",
+                "2"
+              ],
+              "bonne_reponse": 0,
+              "explication": "4 × (-2) = -8."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Dans f(x) = ax + b, comment appelle-t-on le terme 'b' ?",
+              "options": [
+                "Le coefficient directeur",
+                "L'image",
+                "L'ordonnée à l'origine",
+                "L'antécédent"
+              ],
+              "bonne_reponse": 2,
+              "explication": "b est l'endroit où la droite coupe l'axe vertical des ordonnées."
+            }
+          ]
+        },
+        {
+          "id": "m5",
+          "titre": "Statistiques & Probabilités",
+          "theme": "Gestion de données",
+          "couvre": [
+            "rm6",
+            "rm7"
+          ],
+          "cours": "Moyenne : somme des valeurs divisée par l'effectif. Médiane : valeur coupant la série en deux parties égales. Probabilité : nombre d'issues favorables divisé par le nombre total d'issues.",
+          "piege": "Pour trouver une médiane, il faut IMPÉRATIVEMENT trier la série de données dans l'ordre croissant au préalable.",
+          "exercice_ouvert": {
+            "enonce": "Une urne contient 3 boules rouges, 5 boules bleues et 2 boules vertes. On tire une boule au hasard. Calcule la probabilité d'obtenir une boule rouge ou verte.",
+            "criteres": [
+              "J'ai calculé le nombre total de boules (3 + 5 + 2 = 10).",
+              "J'ai compté le nombre de cas favorables (3 + 2 = 5).",
+              "J'ai modélisé sous forme de fraction : 5/10.",
+              "J'ai simplifié la probabilité à 1/2 ou 0,5 (ou 50%)."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quelle est la probabilité d'un événement certain ?",
+              "options": [
+                "0",
+                "0.5",
+                "1",
+                "100"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Un événement certain a une probabilité de 1 (soit 100%)."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Quelle est la moyenne de la série : 10 ; 12 ; 14 ?",
+              "options": [
+                "11",
+                "12",
+                "13",
+                "36"
+              ],
+              "bonne_reponse": 1,
+              "explication": "(10+12+14)/3 = 36/3 = 12."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Si on lance un dé équilibré à 6 faces, quelle est la probabilité d'obtenir un chiffre pair ?",
+              "options": [
+                "1/6",
+                "1/3",
+                "1/2",
+                "2/3"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Il y a 3 chiffres pairs (2, 4, 6) sur 6 faces, donc 3/6 = 1/2."
+            }
+          ]
+        },
+        {
+          "id": "m6",
+          "titre": "Trigonométrie dans le triangle rectangle",
+          "theme": "Géométrie",
+          "couvre": [
+            "rm11"
+          ],
+          "cours": "Dans un triangle rectangle, on retient SOH-CAH-TOA : sinus = côté opposé / hypoténuse, cosinus = côté adjacent / hypoténuse, tangente = côté opposé / côté adjacent. Ces formules permettent de calculer une longueur ou un angle.",
+          "piege": "Confondre le côté 'opposé' et le côté 'adjacent' à l'angle étudié : ils changent selon l'angle que l'on regarde, pas selon la figure elle-même.",
+          "exercice_ouvert": {
+            "enonce": "Dans un triangle ABC rectangle en B, on donne l'angle BAC = 35° et l'hypoténuse AC = 8 cm. Calcule la longueur BC en détaillant la formule choisie.",
+            "criteres": [
+              "J'ai identifié BC comme le côté opposé à l'angle de 35°.",
+              "J'ai choisi la formule du sinus (opposé/hypoténuse).",
+              "J'ai posé l'équation sin(35°) = BC / 8.",
+              "J'ai isolé BC et trouvé une valeur proche de 4,59 cm."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quelle formule utilise le côté adjacent ET l'hypoténuse ?",
+              "options": [
+                "Le sinus",
+                "Le cosinus",
+                "La tangente",
+                "Pythagore"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Cosinus = côté adjacent / hypoténuse (CAH)."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Dans un triangle rectangle, l'hypoténuse est toujours :",
+              "options": [
+                "Le plus petit côté",
+                "Le côté opposé à l'angle droit",
+                "Un côté adjacent",
+                "Variable selon l'angle"
+              ],
+              "bonne_reponse": 1,
+              "explication": "L'hypoténuse est par définition le côté opposé à l'angle droit, et le plus long du triangle."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Si tan(angle) = opposé/adjacent = 0,7 et que le côté adjacent vaut 10 cm, le côté opposé vaut :",
+              "options": [
+                "7 cm",
+                "14,3 cm",
+                "10,7 cm",
+                "0,07 cm"
+              ],
+              "bonne_reponse": 0,
+              "explication": "0,7 × 10 = 7 cm."
+            }
+          ]
+        },
+        {
+          "id": "m7",
+          "titre": "Géométrie dans l'espace : solides et volumes",
+          "theme": "Géométrie",
+          "couvre": [
+            "rm12",
+            "rm8"
+          ],
+          "cours": "Volumes à connaître par cœur : pavé droit = L×l×h ; cylindre = π×r²×h ; cône = (π×r²×h)/3 ; sphère = (4/3)×π×r³ ; pyramide = (aire base × hauteur)/3. Une section d'un solide par un plan parallèle à la base donne une figure réduite (agrandissement/réduction).",
+          "piege": "Oublier de diviser par 3 le volume d'une pyramide ou d'un cône — c'est l'erreur la plus fréquente du Brevet sur ce chapitre.",
+          "exercice_ouvert": {
+            "enonce": "Un silo agricole a la forme d'un cylindre de rayon 2 m et de hauteur 6 m, surmonté d'un cône de même rayon et de hauteur 1,5 m. Calcule le volume total du silo (arrondi au m³ près).",
+            "criteres": [
+              "J'ai calculé le volume du cylindre : π × 2² × 6 ≈ 75,4 m³.",
+              "J'ai calculé le volume du cône : (π × 2² × 1,5)/3 ≈ 6,3 m³.",
+              "J'ai additionné les deux volumes pour obtenir le volume total.",
+              "J'ai arrondi correctement le résultat final (environ 82 m³)."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quelle est la formule du volume d'un pavé droit ?",
+              "options": [
+                "L + l + h",
+                "L × l × h",
+                "2(L+l)×h",
+                "L²×h"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Volume = Longueur × largeur × hauteur."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Le volume d'une pyramide se calcule avec :",
+              "options": [
+                "Aire base × hauteur",
+                "(Aire base × hauteur) / 2",
+                "(Aire base × hauteur) / 3",
+                "Aire base × hauteur × 3"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Le volume d'une pyramide (ou d'un cône) vaut toujours le tiers de celui du prisme/cylindre de même base et hauteur."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Si on réduit un solide à l'échelle 1/2, son volume est multiplié par :",
+              "options": [
+                "1/2",
+                "1/4",
+                "1/8",
+                "2"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Le volume varie selon le cube du coefficient de réduction : (1/2)³ = 1/8."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "francais",
+      "label": "Français",
+      "emoji": "✍️",
+      "categorie": "Lettres",
+      "referentiel_officiel": [
+        {
+          "id": "rf1",
+          "label": "Figures de style et procédés d'écriture"
+        },
+        {
+          "id": "rf2",
+          "label": "Grammaire : classes et fonctions"
+        },
+        {
+          "id": "rf3",
+          "label": "Conjugaison : temps, modes et valeurs"
+        },
+        {
+          "id": "rf4",
+          "label": "Compréhension de texte et analyse littéraire"
+        },
+        {
+          "id": "rf5",
+          "label": "Rédaction argumentée"
+        },
+        {
+          "id": "rf6",
+          "label": "Dictée et réécriture (orthographe)"
+        }
+      ],
+      "chapitres": [
+        {
+          "id": "f1",
+          "titre": "Figures de style & Analyse de texte",
+          "theme": "Langue & Outils",
+          "couvre": [
+            "rf1"
+          ],
+          "cours": "Les figures fondamentales à repérer : Métaphore (sans outil de comparaison), Comparaison (avec 'comme', 'tel'), Hyperbole (exagération), Personnification (attribuer des traits humains à un objet).",
+          "piege": "Confondre la métaphore et la comparaison. S'il n'y a pas de mot-outil, c'est une métaphore.",
+          "exercice_ouvert": {
+            "enonce": "Identifiez et analysez l'effet produit par la figure de style suivante : 'Cette chambre était un désert de glace'.",
+            "criteres": [
+              "J'ai identifié qu'il s'agit d'une métaphore.",
+              "J'ai relevé l'absence de terme comparatif.",
+              "J'ai expliqué l'effet de solitude, de froid ou d'abandon que cela évoque pour le personnage.",
+              "J'ai rédigé ma réponse dans un style correct et argumenté."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quelle figure utilise un outil de comparaison comme 'pareil à' ?",
+              "options": [
+                "La métaphore",
+                "La comparaison",
+                "L'allégorie",
+                "L'ironie"
+              ],
+              "bonne_reponse": 1,
+              "explication": "La présence d'un outil caractérise toujours la comparaison."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Quelle figure lit-on dans : 'Le vent hurlait de douleur' ?",
+              "options": [
+                "Une hyperbole",
+                "Une personnification",
+                "Une antithèse",
+                "Une litote"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Attribuer l'action de hurler de douleur au vent est une personnification."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Qu'est-ce qu'un oxymore ?",
+              "options": [
+                "Une exagération",
+                "Deux mots opposés côte à côte",
+                "Une périphrase longue",
+                "Une répétition"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Exemple : 'Une obscure clarté'."
+            }
+          ]
+        },
+        {
+          "id": "f2",
+          "titre": "Grammaire : Classes & Fonctions grammaticales",
+          "theme": "Grammaire",
+          "couvre": [
+            "rf2"
+          ],
+          "cours": "La classe grammaticale est l'identité d'un mot (nature : nom, verbe, adjectif). La fonction est son rôle dans la phrase (sujet, COD, COI, complément circonstanciel).",
+          "piege": "Confondre nature (ce que le mot EST à vie) et fonction (ce que le mot FAIT dans la phrase).",
+          "exercice_ouvert": {
+            "enonce": "Donnez la nature et la fonction du mot souligné dans : 'L'élève lit *attentivement* sa leçon.'",
+            "criteres": [
+              "J'ai déterminé la nature : adverbe de manière.",
+              "J'ai déterminé la fonction : complément circonstanciel de manière du verbe lire.",
+              "J'ai correctement orthographié les termes de grammaire."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quelle est la nature du mot 'magnifique' ?",
+              "options": [
+                "Nom",
+                "Verbe",
+                "Adjectif qualificatif",
+                "Adverbe"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Il sert à qualifier un être ou un objet."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Dans 'Il lui donne un livre', quelle est la fonction de 'un livre' ?",
+              "options": [
+                "Sujet",
+                "COD",
+                "COI",
+                "Attribut du sujet"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Il donne quoi ? Un livre (Complément d'Objet Direct)."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Quelle est la fonction d'un adjectif placé juste à côté du nom qu'il qualifie ?",
+              "options": [
+                "Attribut du sujet",
+                "Épithète liée",
+                "Complément du nom",
+                "Apposé"
+              ],
+              "bonne_reponse": 1,
+              "explication": "L'adjectif directement rattaché au nom est une épithète."
+            }
+          ]
+        },
+        {
+          "id": "f3",
+          "titre": "Conjugaison : temps, modes et valeurs",
+          "theme": "Langue & Outils",
+          "couvre": [
+            "rf3"
+          ],
+          "cours": "Au Brevet, trois temps/modes sont à maîtriser en priorité : l'imparfait (description, habitude passée), le passé simple (action brève et achevée dans un récit), et le conditionnel (hypothèse, politesse, futur dans le passé). Le subjonctif s'emploie après des verbes de volonté, doute ou sentiment.",
+          "piege": "Confondre la terminaison du passé simple à la 3e personne du singulier des verbes du 1er groupe (-a) avec l'imparfait (-ait) : 'il chanta' (passé simple) vs 'il chantait' (imparfait).",
+          "exercice_ouvert": {
+            "enonce": "Conjugue le verbe 'finir' à la 3e personne du singulier à l'imparfait, au passé simple et au conditionnel présent, puis explique en une phrase la valeur de chaque temps employé.",
+            "criteres": [
+              "J'ai correctement conjugué à l'imparfait : il finissait.",
+              "J'ai correctement conjugué au passé simple : il finit.",
+              "J'ai correctement conjugué au conditionnel : il finirait.",
+              "J'ai expliqué la valeur de chaque temps (description/habitude, action brève, hypothèse)."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quel temps exprime une action brève et achevée dans un récit au passé ?",
+              "options": [
+                "L'imparfait",
+                "Le passé simple",
+                "Le présent",
+                "Le futur"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Le passé simple marque une rupture, une action ponctuelle qui fait avancer le récit."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Quelle est la valeur principale de l'imparfait dans un récit ?",
+              "options": [
+                "Action ponctuelle",
+                "Description ou habitude",
+                "Ordre",
+                "Certitude future"
+              ],
+              "bonne_reponse": 1,
+              "explication": "L'imparfait sert à décrire un décor, un état ou une action répétée dans le passé."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Après 'il faut que', quel mode emploie-t-on ?",
+              "options": [
+                "L'indicatif",
+                "Le conditionnel",
+                "Le subjonctif",
+                "L'impératif"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Les expressions de nécessité ou de volonté ('il faut que', 'je veux que') imposent le subjonctif."
+            }
+          ]
+        },
+        {
+          "id": "f4",
+          "titre": "Compréhension de texte : méthode et entraînement",
+          "theme": "Compréhension & Analyse",
+          "couvre": [
+            "rf4"
+          ],
+          "cours": "Au Brevet, l'épreuve de compréhension porte sur un texte support (extrait de roman, poème ou théâtre) suivi de questions. Méthode : lire le texte deux fois, repérer le narrateur et le point de vue, situer l'action dans le temps et l'espace, puis répondre en citant toujours le texte entre guillemets pour justifier chaque réponse.",
+          "piege": "Répondre sans citer le texte. Une réponse même juste mais non justifiée par une citation perd des points à l'examen.",
+          "support_texte": "Le vieux Martin descendait l'escalier de bois chaque matin à la même heure, comptant les marches par habitude plus que par nécessité. Depuis que sa fille était partie pour la ville, la maison semblait avoir rétréci autour de lui, comme un vêtement trop ancien qu'on n'ose plus porter mais qu'on garde par fidélité. Il ouvrit les volets sur un jardin qu'il ne reconnaissait plus tout à fait : les rosiers qu'il avait plantés vingt ans auparavant continuaient de fleurir, indifférents à son silence.",
+          "exercice_ouvert": {
+            "enonce": "À partir du texte support ci-dessus, réponds aux questions suivantes en justifiant systématiquement par une courte citation : 1) Qui est le personnage principal et quelle est sa situation ? 2) Quel sentiment domine dans cet extrait et par quels indices le repère-t-on ?",
+            "criteres": [
+              "J'ai identifié Martin comme personnage principal, vivant seul depuis le départ de sa fille.",
+              "J'ai cité au moins une expression entre guillemets pour justifier ma réponse.",
+              "J'ai identifié le sentiment de solitude ou de nostalgie.",
+              "J'ai relevé un indice précis (comparaison du vêtement, jardin méconnaissable, silence)."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Dans le texte support, qui est le personnage principal ?",
+              "options": [
+                "La fille de Martin",
+                "Martin",
+                "Un voisin",
+                "Le narrateur extérieur anonyme"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Le texte suit les gestes quotidiens de Martin."
+            },
+            {
+              "niveau": 2,
+              "enonce": "À quelle figure de style correspond 'comme un vêtement trop ancien' ?",
+              "options": [
+                "Une métaphore",
+                "Une comparaison",
+                "Une personnification",
+                "Une hyperbole"
+              ],
+              "bonne_reponse": 1,
+              "explication": "L'outil de comparaison 'comme' signale une comparaison, pas une métaphore."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Quel est le sentiment général qui domine ce texte ?",
+              "options": [
+                "La joie",
+                "La colère",
+                "La solitude / nostalgie",
+                "La peur"
+              ],
+              "bonne_reponse": 2,
+              "explication": "L'absence de la fille, la maison qui 'rétrécit', les rosiers 'indifférents au silence' traduisent un sentiment de solitude."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "histoire_geo",
+      "label": "Histoire-Géographie",
+      "emoji": "🌍",
+      "categorie": "Sciences Humaines",
+      "referentiel_officiel": [
+        {
+          "id": "rh1",
+          "label": "Première Guerre mondiale (1914-1918)"
+        },
+        {
+          "id": "rh2",
+          "label": "Régimes totalitaires des années 1930"
+        },
+        {
+          "id": "rh3",
+          "label": "Seconde Guerre mondiale, Occupation, Résistance, Shoah"
+        },
+        {
+          "id": "rh4",
+          "label": "La France depuis 1945 (Ve République, décolonisation)"
+        },
+        {
+          "id": "rh5",
+          "label": "Aires urbaines en France"
+        },
+        {
+          "id": "rh6",
+          "label": "Espaces productifs et leurs évolutions"
+        },
+        {
+          "id": "rh7",
+          "label": "Espaces de faible densité"
+        },
+        {
+          "id": "rh8",
+          "label": "La France et l'Union européenne dans le monde"
+        }
+      ],
+      "chapitres": [
+        {
+          "id": "h1",
+          "titre": "La Première Guerre mondiale & Civils au front",
+          "theme": "Histoire",
+          "couvre": [
+            "rh1"
+          ],
+          "cours": "Guerre totale (1914-1918) impliquant militaires et civils. Faits marquants : les tranchées (Verdun, 1916), le génocide des Arméniens (1915), les révolutions russes (1917).",
+          "piege": "Confondre l'Armistice (11 novembre 1918 - fin des combats) et le Traité de Versailles (1919 - traité de paix).",
+          "exercice_ouvert": {
+            "enonce": "Rédigez un paragraphe argumenté d'environ 15 lignes montrant en quoi la Première Guerre mondiale est une 'guerre totale'.",
+            "criteres": [
+              "J'ai évoqué la mobilisation des soldats au front (conditions des Poilus).",
+              "J'ai décrit la mobilisation de l'arrière (femmes dans les usines, économie de guerre, emprunts).",
+              "J'ai cité l'utilisation de la propagande et de la censure.",
+              "Mon texte est structuré avec des connecteurs logiques."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "En quelle année s'est déroulée la bataille de Verdun ?",
+              "options": [
+                "1914",
+                "1915",
+                "1916",
+                "1918"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Verdun a eu lieu de février à décembre 1916."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Quel peuple a subi un génocide dans l'Empire ottoman en 1915 ?",
+              "options": [
+                "Les Arméniens",
+                "Les Grecs",
+                "Les Kurdes",
+                "Les Slaves"
+              ],
+              "bonne_reponse": 0,
+              "explication": "Le génocide arménien fait plus d'un million de morts dès 1915."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Qui prend le pouvoir en Russie lors de la révolution d'octobre 1917 ?",
+              "options": [
+                "Le Tsar Nicolas II",
+                "Lénine et les Bolcheviks",
+                "Staline",
+                "Trotsky"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Lénine mène la seconde révolution pour installer le régime communiste."
+            }
+          ]
+        },
+        {
+          "id": "h2",
+          "titre": "Les régimes totalitaires des années 1930",
+          "theme": "Histoire",
+          "couvre": [
+            "rh2"
+          ],
+          "cours": "Régimes contrôlant toute la société par la terreur, le parti unique, le culte de la personnalité et l'embrigadement de la jeunesse. URSS de Staline (collectivisation, goulag) et Allemagne d'Hitler (nazisme antisémite, raciste, lois de Nuremberg en 1935).",
+          "piege": "Attribuer le Goulag à Hitler ou les camps de concentration uniquement à Staline. Ne pas confondre les idéologies.",
+          "exercice_ouvert": {
+            "enonce": "Décrivez les méthodes utilisées par le régime nazi ou soviétique pour embrigader et contrôler la population.",
+            "criteres": [
+              "J'ai cité le culte de la personnalité (affiches, propagande).",
+              "J'ai mentionné les organisations de jeunesse obligatoires (Jeunesses hitlériennes / Komsomols).",
+              "J'ai parlé de la terreur de masse (Gestapo / NKVD, déportations au goulag ou camps).",
+              "J'ai identifié le rôle du parti unique."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quel chef d'État dirige l'URSS à partir de la fin des années 1920 ?",
+              "options": [
+                "Lénine",
+                "Staline",
+                "Trotsky",
+                "Khrouchtchev"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Staline s'impose après la mort de Lénine."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Comment appelle-t-on les camps de travail forcé en URSS ?",
+              "options": [
+                "Les Stalags",
+                "Le Goulag",
+                "Les Ghettos",
+                "Les Kolkhozes"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Le Goulag est l'administration chargée des camps de travail soviétiques."
+            },
+            {
+              "niveau": 3,
+              "enonce": "En quelle année Hitler arrive-t-il légalement au pouvoir en Allemagne ?",
+              "options": [
+                "1919",
+                "1929",
+                "1933",
+                "1939"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Il est nommé chancelier le 30 janvier 1933."
+            }
+          ]
+        },
+        {
+          "id": "h3",
+          "titre": "La Seconde Guerre mondiale : France, Occupation, Résistance, Shoah",
+          "theme": "Histoire",
+          "couvre": [
+            "rh3"
+          ],
+          "cours": "Après la défaite de juin 1940, la France est coupée en deux : zone occupée au nord, zone libre administrée par le régime de Vichy (maréchal Pétain) au sud, qui collabore avec l'occupant nazi (rafle du Vél d'Hiv, juillet 1942). En face, la France Libre du général de Gaulle (appel du 18 juin 1940 depuis Londres) et la Résistance intérieure organisent la lutte clandestine. La Shoah désigne l'extermination systématique des Juifs d'Europe par les nazis (environ 6 millions de victimes).",
+          "piege": "Confondre la 'collaboration' (Vichy, qui choisit de coopérer avec l'occupant) et la simple 'occupation militaire' : la collaboration est un choix politique actif, pas une contrainte subie passivement.",
+          "exercice_ouvert": {
+            "enonce": "Expliquez, à l'aide d'exemples précis, comment la France a été divisée entre collaboration et résistance pendant la Seconde Guerre mondiale.",
+            "criteres": [
+              "J'ai cité l'armistice de juin 1940 et la division zone occupée / zone libre.",
+              "J'ai expliqué le régime de Vichy et la politique de collaboration (rafle du Vél d'Hiv).",
+              "J'ai cité l'appel du 18 juin 1940 et le rôle du général de Gaulle.",
+              "J'ai mentionné des actions concrètes de la Résistance (réseaux, sabotages, presse clandestine)."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Qui dirige le régime de Vichy à partir de 1940 ?",
+              "options": [
+                "Charles de Gaulle",
+                "Philippe Pétain",
+                "Jean Moulin",
+                "Pierre Laval seul"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Le maréchal Pétain devient chef de l'État français à Vichy après l'armistice de juin 1940."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Que désigne le terme 'Shoah' ?",
+              "options": [
+                "La bataille de Stalingrad",
+                "L'extermination des Juifs d'Europe par les nazis",
+                "Le débarquement de Normandie",
+                "La déportation des résistants uniquement"
+              ],
+              "bonne_reponse": 1,
+              "explication": "La Shoah est le génocide des Juifs d'Europe, planifié et mis en œuvre par le régime nazi."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Quelle date correspond à l'appel du général de Gaulle depuis Londres ?",
+              "options": [
+                "14 juin 1940",
+                "18 juin 1940",
+                "6 juin 1944",
+                "8 mai 1945"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Le 18 juin 1940, de Gaulle appelle à la poursuite du combat depuis la BBC."
+            }
+          ]
+        },
+        {
+          "id": "h4",
+          "titre": "La France depuis 1945 : Ve République et décolonisation",
+          "theme": "Histoire",
+          "couvre": [
+            "rh4"
+          ],
+          "cours": "En 1958, face à la crise algérienne, le général de Gaulle fonde la Ve République, dotée d'un président fort élu au suffrage universel direct à partir de 1962. La décolonisation s'effectue par la négociation (Maroc, Tunisie, 1956) ou par la guerre (Algérie, 1954-1962, indépendance obtenue après les accords d'Évian).",
+          "piege": "Confondre la IVe République (1946-1958, instable, régime parlementaire) et la Ve République (1958-aujourd'hui, régime présidentiel fort).",
+          "exercice_ouvert": {
+            "enonce": "Expliquez les circonstances de la fondation de la Ve République en 1958 et présentez un exemple de décolonisation française.",
+            "criteres": [
+              "J'ai cité la crise algérienne de 1958 comme contexte de fondation.",
+              "J'ai mentionné le rôle du général de Gaulle et la nouvelle Constitution.",
+              "J'ai donné un exemple précis de décolonisation (Algérie ou Maroc/Tunisie).",
+              "J'ai utilisé une date précise pour situer l'événement choisi."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "En quelle année est fondée la Ve République ?",
+              "options": [
+                "1945",
+                "1958",
+                "1962",
+                "1981"
+              ],
+              "bonne_reponse": 1,
+              "explication": "La nouvelle Constitution est adoptée en 1958, portée par de Gaulle."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Quels accords mettent fin à la guerre d'Algérie ?",
+              "options": [
+                "Les accords de Genève",
+                "Les accords d'Évian",
+                "Le traité de Versailles",
+                "Les accords de Munich"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Les accords d'Évian, signés en mars 1962, organisent l'indépendance de l'Algérie."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Depuis quelle date le président de la République est-il élu au suffrage universel direct ?",
+              "options": [
+                "1945",
+                "1958",
+                "1962",
+                "1968"
+              ],
+              "bonne_reponse": 2,
+              "explication": "La réforme constitutionnelle de 1962, validée par référendum, instaure ce mode d'élection."
+            }
+          ]
+        },
+        {
+          "id": "g1",
+          "titre": "Les aires urbaines en France",
+          "theme": "Géographie",
+          "couvre": [
+            "rh5"
+          ],
+          "cours": "Une aire urbaine est composée d'un pôle urbain (ville-centre + banlieue) et d'une couronne périurbaine. Phénomène majeur : la périurbanisation (étalement de la ville liée aux transports et au coût du logement).",
+          "piege": "Confondre la banlieue (proche du pôle) et la couronne périurbaine (campagnes urbanisées éloignées).",
+          "exercice_ouvert": {
+            "enonce": "Expliquez le mécanisme de la périurbanisation en France et ses conséquences sur les déplacements quotidiens (migrations pendulaires).",
+            "criteres": [
+              "J'ai défini la périurbanisation (étalement urbain).",
+              "J'ai donné les causes (prix du foncier en ville, recherche de maisons individuelles).",
+              "J'ai expliqué la conséquence : augmentation des distances et utilisation de la voiture.",
+              "J'ai utilisé le terme précis d'intermodalité ou de 'migrations pendulaires'."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quel pourcentage de la population française vit dans une aire urbaine ?",
+              "options": [
+                "A peu près 20%",
+                "Environ 50%",
+                "Plus de 80%",
+                "99%"
+              ],
+              "bonne_reponse": 2,
+              "explication": "La France est un pays largement urbanisé (environ 85% de la population)."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Qu'appelle-t-on les trajets quotidiens entre le domicile et le travail ?",
+              "options": [
+                "Les flux migratoires",
+                "Les migrations pendulaires",
+                "L'exode rural",
+                "Le nomadisme"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Ces flux font l'aller-retour chaque jour comme un pendule."
+            },
+            {
+              "niveau": 3,
+              "enonce": "De quoi est composé le pôle urbain ?",
+              "options": [
+                "Ville-centre + Banlieue",
+                "Couronne périurbaine seule",
+                "Espace rural",
+                "Communes amies"
+              ],
+              "bonne_reponse": 0,
+              "explication": "Le pôle urbain rassemble la ville-centre historique et ses banlieues attenantes."
+            }
+          ]
+        },
+        {
+          "id": "g2",
+          "titre": "Les espaces productifs et leurs évolutions",
+          "theme": "Géographie",
+          "couvre": [
+            "rh6"
+          ],
+          "cours": "La France compte trois grands types d'espaces productifs : agricoles (céréaliculture intensive dans le Bassin parisien, viticulture), industriels (zones portuaires comme Le Havre, sites high-tech comme Toulouse) et touristiques (littoraux, montagnes, Paris). Ces espaces se transforment sous l'effet de la mondialisation et de la délocalisation.",
+          "piege": "Croire que l'industrie française a disparu : elle s'est transformée (relocalisation de certaines usines, montée en gamme), elle n'a pas disparu.",
+          "exercice_ouvert": {
+            "enonce": "Présentez un exemple d'espace productif industriel en France et expliquez comment la mondialisation l'a transformé.",
+            "criteres": [
+              "J'ai cité un espace productif industriel précis (port, zone industrielle, technopole).",
+              "J'ai expliqué un effet de la mondialisation (implantation d'usines étrangères, délocalisation, exportations).",
+              "J'ai utilisé du vocabulaire géographique adapté.",
+              "Mon exemple est situé précisément (région ou ville)."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Lequel de ces espaces est un espace productif touristique majeur en France ?",
+              "options": [
+                "Le Bassin parisien",
+                "La Côte d'Azur",
+                "La Lorraine industrielle",
+                "Le Massif Central agricole"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Le littoral méditerranéen est l'un des premiers espaces touristiques du pays."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Quel est le premier port de marchandises de France ?",
+              "options": [
+                "Marseille",
+                "Le Havre",
+                "Nantes-Saint-Nazaire",
+                "Calais"
+              ],
+              "bonne_reponse": 0,
+              "explication": "Le port de Marseille-Fos reste le premier port français en tonnage."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Comment appelle-t-on le déplacement d'une activité de production vers un pays à coûts plus faibles ?",
+              "options": [
+                "La périurbanisation",
+                "La délocalisation",
+                "La métropolisation",
+                "La désertification"
+              ],
+              "bonne_reponse": 1,
+              "explication": "La délocalisation consiste à transférer une production à l'étranger pour réduire les coûts."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "emc",
+      "label": "Enseignement Moral et Civique (EMC)",
+      "emoji": "⚖️",
+      "categorie": "Citoyenneté",
+      "referentiel_officiel": [
+        {
+          "id": "re1",
+          "label": "Valeurs, principes et symboles de la République"
+        },
+        {
+          "id": "re2",
+          "label": "Citoyenneté, engagement et débat démocratique"
+        },
+        {
+          "id": "re3",
+          "label": "Esprit critique, médias et information"
+        }
+      ],
+      "note_module": "Sous-épreuve distincte au DNB 2026 (coefficient 0,5, notée sur 20, intégrée à l'épreuve d'Histoire-Géographie-EMC de 2h). Format réel : corpus de documents + série de questions + courte rédaction d'une dizaine de lignes. Thématique annuelle 2026 : 's'engager et débattre en démocratie'.",
+      "chapitres": [
+        {
+          "id": "e1",
+          "titre": "Valeurs, principes et symboles de la République",
+          "theme": "EMC",
+          "couvre": [
+            "re1"
+          ],
+          "cours": "La devise 'Liberté, Égalité, Fraternité' résume les trois valeurs fondatrices. Les principes de la République sont : la laïcité (séparation des Églises et de l'État, loi de 1905, neutralité de l'État face aux convictions religieuses), l'indivisibilité, et la démocratie. Les symboles (drapeau tricolore, Marianne, hymne, devise) incarnent ces valeurs.",
+          "piege": "Confondre laïcité (neutralité de l'État, liberté de croire ou de ne pas croire) et athéisme (le fait de ne pas croire en Dieu) : la laïcité ne rejette aucune religion, elle garantit la liberté de toutes.",
+          "exercice_ouvert": {
+            "enonce": "À partir de tes connaissances, rédige un texte d'une dizaine de lignes expliquant en quoi la laïcité garantit à la fois la liberté de conscience et l'égalité entre les citoyens.",
+            "criteres": [
+              "J'ai défini la laïcité comme neutralité de l'État (loi de 1905).",
+              "J'ai expliqué qu'elle garantit la liberté de croire ou de ne pas croire.",
+              "J'ai relié laïcité et égalité entre les citoyens, quelles que soient leurs convictions.",
+              "Mon texte fait une dizaine de lignes et est correctement structuré."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quelle est la devise de la République française ?",
+              "options": [
+                "Unité, Travail, Progrès",
+                "Liberté, Égalité, Fraternité",
+                "Ordre et Progrès",
+                "Paix, Justice, Liberté"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Cette devise figure sur le fronton des bâtiments publics depuis la IIIe République."
+            },
+            {
+              "niveau": 2,
+              "enonce": "En quelle année est votée la loi de séparation des Églises et de l'État ?",
+              "options": [
+                "1789",
+                "1882",
+                "1905",
+                "1958"
+              ],
+              "bonne_reponse": 2,
+              "explication": "La loi du 9 décembre 1905 fonde la laïcité française."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Que garantit le principe de laïcité ?",
+              "options": [
+                "L'interdiction de toute religion",
+                "La neutralité de l'État et la liberté de conscience de chacun",
+                "La religion d'État officielle",
+                "L'obligation de pratiquer une religion"
+              ],
+              "bonne_reponse": 1,
+              "explication": "La laïcité protège la liberté de croire ou de ne pas croire, sans imposer ni interdire une religion."
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "titre": "Citoyenneté, médias et engagement démocratique",
+          "theme": "EMC",
+          "couvre": [
+            "re2",
+            "re3"
+          ],
+          "cours": "S'engager en démocratie peut prendre plusieurs formes : voter, adhérer à une association, participer à un budget participatif, manifester pacifiquement. Face à l'information, il faut exercer son esprit critique : vérifier la source, distinguer un fait d'une opinion, se méfier des rumeurs et des images sorties de leur contexte (désinformation).",
+          "piege": "Croire qu'une information est vraie uniquement parce qu'elle est largement partagée sur les réseaux sociaux : la viralité n'est pas un critère de fiabilité.",
+          "exercice_ouvert": {
+            "enonce": "Donne deux exemples concrets d'engagement citoyen à l'échelle locale (commune, collège) et explique en quoi ils participent au débat démocratique.",
+            "criteres": [
+              "J'ai donné un premier exemple précis d'engagement (conseil municipal des jeunes, association, pétition).",
+              "J'ai donné un second exemple distinct.",
+              "J'ai expliqué le lien avec le débat démocratique (expression d'une opinion, prise de décision collective).",
+              "J'ai utilisé un vocabulaire civique précis (engagement, délibération, intérêt général)."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "À partir de quel âge un citoyen français peut-il voter ?",
+              "options": [
+                "16 ans",
+                "18 ans",
+                "21 ans",
+                "25 ans"
+              ],
+              "bonne_reponse": 1,
+              "explication": "La majorité électorale est fixée à 18 ans en France."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Qu'est-ce qu'un 'budget participatif' ?",
+              "options": [
+                "Un budget secret de l'État",
+                "Un dispositif où les habitants votent pour des projets locaux financés par la collectivité",
+                "Une taxe sur les associations",
+                "Un budget réservé aux entreprises"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Le budget participatif permet aux citoyens de proposer et de voter pour des projets d'intérêt local."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Face à une information choquante reçue sur un réseau social, quel est le réflexe d'esprit critique à adopter en priorité ?",
+              "options": [
+                "La partager immédiatement pour informer ses amis",
+                "Vérifier la source et croiser avec d'autres médias avant d'y croire",
+                "L'ignorer systématiquement",
+                "La croire si elle a beaucoup de likes"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Vérifier la source et croiser les informations est la base de l'esprit critique face à la désinformation."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sciences",
+      "label": "Sciences (SVT, Physique-Chimie)",
+      "emoji": "🧬",
+      "categorie": "Sciences Expérimentales",
+      "referentiel_officiel": [
+        {
+          "id": "rs1",
+          "label": "Génétique : chromosomes, gènes et caractères"
+        },
+        {
+          "id": "rs2",
+          "label": "Forces, gravitation et mouvements"
+        },
+        {
+          "id": "rs3",
+          "label": "Électricité : circuits et grandeurs"
+        },
+        {
+          "id": "rs4",
+          "label": "Énergie : formes, sources et transferts"
+        },
+        {
+          "id": "rs5",
+          "label": "Système nerveux et système immunitaire"
+        },
+        {
+          "id": "rs6",
+          "label": "Risques naturels et développement durable"
+        }
+      ],
+      "note_module": "L'épreuve de sciences 2026 porte sur Physique-Chimie et SVT (tirage au sort ministériel). La Technologie n'est pas évaluée cette session — les chapitres ci-dessous priorisent donc ces deux disciplines.",
+      "chapitres": [
+        {
+          "id": "s1",
+          "titre": "Génétique : Chromosomes & Caractères",
+          "theme": "SVT",
+          "couvre": [
+            "rs1"
+          ],
+          "cours": "Chaque cellule humaine possède 23 paires de chromosomes (46 au total) situés dans le noyau. Les gènes, portés par les chromosomes, déterminent nos caractères héréditaires et existent sous différentes versions appelées allèles.",
+          "piege": "Confondre gène (l'emplacement/la fonction générale) et allèle (la version précise, ex: groupe A ou B).",
+          "exercice_ouvert": {
+            "enonce": "Expliquez pourquoi deux parents peuvent donner naissance à des enfants ayant des combinaisons de caractères uniques, à l'aide des notions de méiose et de fécondation.",
+            "criteres": [
+              "J'ai mentionné la séparation aléatoire des chromosomes lors de la formation des gamètes (méiose).",
+              "J'ai évoqué l'unicité de chaque ovule et spermatozoïde.",
+              "J'ai expliqué que la fécondation réunit au hasard deux gamètes uniques.",
+              "J'ai conclu sur le brassage génétique."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Où se situent les chromosomes dans la cellule ?",
+              "options": [
+                "Dans la membrane",
+                "Dans le cytoplasme",
+                "Dans le noyau",
+                "Dans les vacuoles"
+              ],
+              "bonne_reponse": 2,
+              "explication": "L'information génétique (ADN) est confinée dans le noyau cellulaire."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Quelle est la paire de chromosomes sexuels d'un individu de sexe masculin ?",
+              "options": [
+                "XX",
+                "YY",
+                "XY",
+                "XO"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Les femmes possèdent XX et les hommes XY."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Comment nomme-t-on les différentes versions d'un même gène ?",
+              "options": [
+                "Les molécules",
+                "Les allèles",
+                "Les phénotypes",
+                "Les mutations"
+              ],
+              "bonne_reponse": 1,
+              "explication": "Un allèle est une version variable d'un gène (ex: allèle yeux bleus ou marron)."
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "titre": "Forces, Gravitation & Mouvements",
+          "theme": "Physique-Chimie",
+          "couvre": [
+            "rs2"
+          ],
+          "cours": "Le poids (P) et la masse (m) sont deux grandeurs différentes liées par la formule P = m × g. La masse est invariable, le poids change selon l'astre car l'intensité de pesanteur (g) varie.",
+          "piege": "Confondre le poids (en Newtons N) et la masse (en kilogrammes kg) dans le langage courant.",
+          "exercice_ouvert": {
+            "enonce": "Un astronaute a une masse de 80 kg sur Terre (g = 9,8 N/kg). Calculez son poids sur Terre, puis déterminez sa masse et son poids sur la Lune (g = 1,6 N/kg).",
+            "criteres": [
+              "J'ai rappelé la formule P = m × g.",
+              "J'ai calculé le poids sur Terre : 80 × 9,8 = 784 N.",
+              "J'ai affirmé que la masse reste identique sur la Lune (80 kg).",
+              "J'ai calculé le poids sur la Lune : 80 × 1,6 = 128 N."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quelle est l'unité internationale de mesure d'une force ou d'un poids ?",
+              "options": [
+                "Le Kilogramme",
+                "Le Joule",
+                "Le Newton",
+                "Le Watt"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Le Newton (symbole N) mesure les actions mécaniques."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Si la vitesse d'un objet augmente en ligne droite, son mouvement est :",
+              "options": [
+                "Uniforme",
+                "Ralenti",
+                "Rectiligne accéléré",
+                "Circulaire"
+              ],
+              "bonne_reponse": 2,
+              "explication": "Vitesse qui augmente = accéléré, ligne droite = rectiligne."
+            },
+            {
+              "niveau": 3,
+              "enonce": "La formule exacte reliant le Poids et la Masse est :",
+              "options": [
+                "P = m / g",
+                "P = m × g",
+                "m = P × g",
+                "P = m + g"
+              ],
+              "bonne_reponse": 1,
+              "explication": "P (Newtons) = m (kg) × g (N/kg)."
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "titre": "Électricité : circuits et grandeurs",
+          "theme": "Physique-Chimie",
+          "couvre": [
+            "rs3"
+          ],
+          "cours": "Dans un circuit en série, l'intensité (I, en ampères) est la même partout. Dans un circuit en dérivation, la tension (U, en volts) est la même aux bornes de chaque branche. La loi d'Ohm relie tension et intensité dans un conducteur ohmique : U = R × I.",
+          "piege": "Inverser les lois série/dérivation : en série l'intensité est constante mais les tensions s'additionnent ; en dérivation c'est l'inverse.",
+          "exercice_ouvert": {
+            "enonce": "Un conducteur ohmique de résistance R = 50 Ω est traversé par un courant d'intensité I = 0,2 A. Calcule la tension U à ses bornes en détaillant le calcul.",
+            "criteres": [
+              "J'ai rappelé la loi d'Ohm : U = R × I.",
+              "J'ai identifié les valeurs : R = 50 Ω et I = 0,2 A.",
+              "J'ai effectué le calcul : 50 × 0,2 = 10.",
+              "J'ai donné le résultat avec son unité : U = 10 V."
+            ]
+          },
+          "questions": [
+            {
+              "niveau": 1,
+              "enonce": "Quelle est l'unité de l'intensité électrique ?",
+              "options": [
+                "Le Volt",
+                "L'Ampère",
+                "L'Ohm",
+                "Le Watt"
+              ],
+              "bonne_reponse": 1,
+              "explication": "L'intensité se mesure en Ampères (A)."
+            },
+            {
+              "niveau": 2,
+              "enonce": "Dans un circuit en série, l'intensité du courant :",
+              "options": [
+                "Est différente à chaque point",
+                "Est la même en tout point",
+                "Diminue après chaque dipôle",
+                "N'existe pas"
+              ],
+              "bonne_reponse": 1,
+              "explication": "En série, il n'y a qu'un seul chemin pour le courant : l'intensité y est partout identique."
+            },
+            {
+              "niveau": 3,
+              "enonce": "Selon la loi d'Ohm, si la résistance double à intensité constante, la tension :",
+              "options": [
+                "Double aussi",
+                "Est divisée par 2",
+                "Reste identique",
+                "Devient nulle"
+              ],
+              "bonne_reponse": 0,
+              "explication": "U = R × I : si R double et I reste fixe, U double également."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "oral_soutenance": {
+    "meta": "Module de préparation à l'épreuve orale de soutenance de projet (coefficient 2, 15 minutes en individuel ou 25 minutes en collectif).",
+    "methode": [
+      {
+        "etape": 1,
+        "titre": "Présenter le contexte",
+        "conseil": "En 2-3 phrases : quel projet (EPI, parcours Avenir, parcours Citoyen ou parcours Artistique), pourquoi ce choix, dans quel cadre (matière, niveau, période)."
+      },
+      {
+        "etape": 2,
+        "titre": "Expliquer la démarche",
+        "conseil": "Décrire les étapes concrètes : recherche, réalisation, difficultés rencontrées et comment elles ont été surmontées. Le jury valorise la sincérité sur les obstacles autant que la réussite finale."
+      },
+      {
+        "etape": 3,
+        "titre": "Mettre en valeur un apprentissage personnel",
+        "conseil": "Ce que le projet a permis de découvrir ou de développer comme compétence (autonomie, travail d'équipe, rigueur, créativité)."
+      },
+      {
+        "etape": 4,
+        "titre": "Se préparer aux questions du jury",
+        "conseil": "Le jury rebondit toujours sur un point précis de l'exposé. Anticiper 2-3 questions probables et préparer des réponses courtes et structurées."
+      },
+      {
+        "etape": 5,
+        "titre": "Soigner la forme",
+        "conseil": "Voix posée, contact visuel, pas de lecture intégrale de notes, gestion du temps (l'exposé dure environ 5 minutes, suivi de 10 minutes de questions)."
+      }
+    ],
+    "questions_jury": [
+      "Pourquoi avoir choisi ce sujet plutôt qu'un autre ?",
+      "Quelle a été la plus grande difficulté rencontrée pendant ce projet, et comment l'as-tu surmontée ?",
+      "Si tu devais recommencer ce projet, que ferais-tu différemment ?",
+      "En quoi ce projet t'a-t-il aidé dans ton orientation ou tes choix futurs ?",
+      "Quel a été ton rôle précis si le projet a été réalisé en groupe ?",
+      "Quelle compétence du Socle commun penses-tu avoir le plus développée avec ce projet ?",
+      "Peux-tu citer une source ou une ressource précise que tu as utilisée pour ce travail ?",
+      "Qu'as-tu appris sur toi-même à travers cette expérience ?"
+    ]
+  },
+  "prompts_ia": {
+    "explication_locale": "Activée de secours"
+  }
+}
