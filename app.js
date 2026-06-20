@@ -4,7 +4,8 @@
 
 const AppState = {
   data: null,
-  leitner: {},          // Répétition espacée (boîtes Leitner) : { theme: {box, nextReview, derniereRevision, total, echecs} }
+  leitner: {},          // Acquis / mémorisation (boîtes Leitner), indexé par id de CHAPITRE
+  progression: {},       // Progression / effort (niveaux explorés + exercice fait), indexé par id de CHAPITRE
   historiqueQuestions: [],
   quiz: {
     chapitreId: null,
@@ -228,7 +229,7 @@ function forcerEchecTimeout() {
   $('explanation-status').textContent = "⏰ TEMPS ÉCOULÉ !";
   $('explanation-text').textContent = "Les 45 secondes maximales pour cet automatisme sont passées.";
   $('quiz-next').disabled = false;
-  enregistrerLacune("Automatismes");
+  enregistrerLacune("automatismes_global", false, "Automatismes");
 }
 
 // ==========================================================================
@@ -237,12 +238,13 @@ function forcerEchecTimeout() {
 
 const LEITNER_INTERVALLES_JOURS = [1, 3, 7, 16, 35]; // index = box - 1
 
-function enregistrerLacune(theme, estSucces = false) {
+function enregistrerLacune(cle, estSucces = false, labelAffichage = null) {
   const now = Date.now();
-  if (!AppState.leitner[theme]) {
-    AppState.leitner[theme] = { box: 1, nextReview: now, derniereRevision: now, total: 0, echecs: 0 };
+  if (!AppState.leitner[cle]) {
+    AppState.leitner[cle] = { box: 1, nextReview: now, derniereRevision: now, total: 0, echecs: 0, label: labelAffichage || cle };
   }
-  const entry = AppState.leitner[theme];
+  const entry = AppState.leitner[cle];
+  entry.label = labelAffichage || entry.label || cle;
   entry.total = (entry.total || 0) + 1;
 
   if (estSucces) {
@@ -255,36 +257,59 @@ function enregistrerLacune(theme, estSucces = false) {
   entry.derniereRevision = now;
   entry.nextReview = now + LEITNER_INTERVALLES_JOURS[entry.box - 1] * 24 * 60 * 60 * 1000;
 
-  localStorage.setItem('dnb_leitner_v2', JSON.stringify(AppState.leitner));
+  localStorage.setItem('dnb_leitner_v3', JSON.stringify(AppState.leitner));
   analyserLacunes();
 }
 
 function analyserLacunes() {
   const now = Date.now();
   const dus = Object.entries(AppState.leitner)
-    .filter(([theme, e]) => e.nextReview <= now)
+    .filter(([cle, e]) => e.nextReview <= now)
     .sort((a, b) => a[1].nextReview - b[1].nextReview);
 
   if (dus.length > 0) {
     $('lacunes-box').classList.remove('hidden');
-    const listeThemes = dus.slice(0, 3).map(([theme]) => theme).join(', ');
+    const listeLabels = dus.slice(0, 3).map(([cle, e]) => e.label || cle).join(', ');
     const reste = dus.length > 3 ? ` (+${dus.length - 3} autre${dus.length - 3 > 1 ? 's' : ''})` : '';
-    $('lacunes-text').innerHTML = `🔁 <b>Révision programmée :</b> ${dus.length} thème${dus.length > 1 ? 's' : ''} à revoir aujourd'hui (répétition espacée) — <b>${listeThemes}</b>${reste}.`;
+    $('lacunes-text').innerHTML = `🔁 <b>Révision programmée :</b> ${dus.length} chapitre${dus.length > 1 ? 's' : ''} à revoir aujourd'hui (répétition espacée) — <b>${listeLabels}</b>${reste}.`;
   } else {
     $('lacunes-box').classList.add('hidden');
   }
 }
 
-// Statut personnel de maîtrise d'un thème (boîte de Leitner). Volontairement codé par
-// FORME d'icône (et non par couleur rouge/vert/orange) pour ne jamais se confondre
-// visuellement avec les barres de "Couverture du programme", qui elles sont éditoriales
-// et utilisent le code couleur succès/alerte/danger.
-function statutMaitrise(theme) {
-  const e = AppState.leitner[theme];
+// Statut personnel de maîtrise d'UN MODULE (chapitre), indexé sur son id — jamais sur son
+// libellé de thème, partagé par plusieurs chapitres. Codé par FORME d'icône (pas par couleur
+// rouge/vert/orange) pour ne jamais se confondre avec les barres de couverture du programme.
+function statutMaitrise(chapitreId) {
+  const e = AppState.leitner[chapitreId];
   if (!e) return { icone: '⚪', label: 'Pas encore testé' };
   if (e.nextReview <= Date.now()) return { icone: '🔄', label: 'À revoir aujourd\'hui' };
   if (e.box >= 4) return { icone: '✅', label: 'Maîtrisé (révision dans plusieurs jours)' };
   return { icone: '📝', label: 'En cours d\'apprentissage' };
+}
+
+// ==========================================================================
+// ▰ PROGRESSION (effort) — distincte de l'acquis (mémoire). Compte les niveaux
+// explorés jusqu'au bout + l'exercice rédigé fait, par chapitre.
+// ==========================================================================
+
+function enregistrerProgression(chapitreId, cle) {
+  if (!AppState.progression[chapitreId]) AppState.progression[chapitreId] = {};
+  AppState.progression[chapitreId][cle] = true;
+  localStorage.setItem('dnb_progression_v1', JSON.stringify(AppState.progression));
+}
+
+function obtenirProgression(chapitre) {
+  const total = 3 + (chapitre.exercice_ouvert ? 1 : 0);
+  const p = AppState.progression[chapitre.id] || {};
+  let faits = 0;
+  [1, 2, 3].forEach(n => { if (p['niveau' + n]) faits++; });
+  if (chapitre.exercice_ouvert && p.exercice) faits++;
+  return { faits, total };
+}
+
+function segmentsVisuels(faits, total) {
+  return '▰'.repeat(faits) + '▱'.repeat(Math.max(0, total - faits));
 }
 
 // ==========================================================================
@@ -314,48 +339,19 @@ function couleurCouverture(pct) {
   return 'var(--color-danger)';
 }
 
-function construireDashboardCouverture() {
-  const container = $('coverage-dashboard');
-  if (!container) return;
-  const { detail, pctGlobal } = calculerCouverture();
-
-  let html = `
-    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
-      <h4 style="margin:0; font-size:0.85rem; text-transform:uppercase; color:var(--text-secondary); letter-spacing:0.05em;">Couverture du programme</h4>
-      <span style="font-size:1.15rem; font-weight:800; color:${couleurCouverture(pctGlobal)};">${pctGlobal}%</span>
-    </div>
-  `;
-
-  detail.forEach(d => {
-    if (d.total === 0) return;
-    const couleur = couleurCouverture(d.pct);
-    html += `
-      <div style="margin-bottom:10px;">
-        <div style="display:flex; justify-content:space-between; font-size:0.78rem; font-weight:600; color:var(--text-primary); margin-bottom:4px;">
-          <span>${d.emoji} ${d.label}</span>
-          <span style="color:${couleur};">${d.nbCouverts}/${d.total} sous-thèmes</span>
-        </div>
-        <div style="width:100%; height:6px; background:var(--border-color); border-radius:3px; overflow:hidden;">
-          <div style="width:${d.pct}%; height:100%; background:${couleur}; transition: width 0.4s ease;"></div>
-        </div>
-      </div>
-    `;
-  });
-
-  html += `<p style="margin:14px 0 0 0; font-size:0.7rem; color:var(--text-secondary); line-height:1.4;">Un sous-thème officiel n'est compté « couvert » que s'il existe au moins un chapitre dédié dans l'app — pas de promesse de programme complet.</p>`;
-  html += `<p style="margin:8px 0 0 0; padding-top:10px; border-top:1px dashed var(--border-color); font-size:0.7rem; color:var(--text-secondary); line-height:1.6;">📚 Barres = contenu disponible dans l'appli (fixe). &nbsp;•&nbsp; ⚪🔄📝✅ sur chaque chapitre = <b>ton</b> niveau personnel, mesuré par tes quiz (évolue).</p>`;
-
-  container.innerHTML = html;
-}
-
 // ==========================================================================
 // 🚀 INITIALISATION
 // ==========================================================================
 
 async function initialiserApp() {
-  const savedLeitner = localStorage.getItem('dnb_leitner_v2');
+  const savedLeitner = localStorage.getItem('dnb_leitner_v3');
   if (savedLeitner) {
     try { AppState.leitner = JSON.parse(savedLeitner); } catch (e) { AppState.leitner = {}; }
+  }
+
+  const savedProgression = localStorage.getItem('dnb_progression_v1');
+  if (savedProgression) {
+    try { AppState.progression = JSON.parse(savedProgression); } catch (e) { AppState.progression = {}; }
   }
 
   const savedHistory = localStorage.getItem('dnb_history_anti_repeat');
@@ -379,7 +375,6 @@ async function initialiserApp() {
   }
 
   construireMenuMatieres();
-  construireDashboardCouverture();
   analyserLacunes();
   configurerNavigation();
 }
@@ -445,15 +440,22 @@ function construireMenuMatieres() {
       m.chapitres.forEach(c => {
         const row = document.createElement('div');
         row.className = 'chapitre-item';
-        row.style.cssText = "padding:16px 14px; margin-top:12px; background:var(--bg-card); border-radius:12px; display:flex; justify-content:space-between; align-items:center; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);";
+        row.style.cssText = "padding:16px 14px; margin-top:12px; background:var(--bg-card); border-radius:12px; display:flex; flex-direction:column; gap:10px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);";
         row.onclick = (e) => ouvrirPreQuiz(m.id, c.id, e);
-        const statut = statutMaitrise(c.theme || c.id);
+        const statut = statutMaitrise(c.id);
+        const prog = obtenirProgression(c);
         row.innerHTML = `
-          <span style="display:flex; align-items:center; gap:8px; font-weight:600; font-size:.88rem; padding-right:12px; text-align:left; color:var(--text-primary); line-height:1.4;">
-            <span title="${statut.label}" style="font-size:0.85rem; flex-shrink:0;">${statut.icone}</span>
-            ${c.titre}
-          </span>
-          <span style="font-size:.68rem; font-weight:700; color:var(--color-primary); background:#EEF2FF; padding:5px 10px; border-radius:8px; white-space:nowrap; text-transform:uppercase; letter-spacing:0.03em;">${c.theme || 'DNB'}</span>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="display:flex; align-items:center; gap:8px; font-weight:600; font-size:.88rem; padding-right:12px; text-align:left; color:var(--text-primary); line-height:1.4;">
+              <span title="${statut.label}" style="font-size:0.85rem; flex-shrink:0;">${statut.icone}</span>
+              ${c.titre}
+            </span>
+            <span style="font-size:.68rem; font-weight:700; color:var(--color-primary); background:#EEF2FF; padding:5px 10px; border-radius:8px; white-space:nowrap; text-transform:uppercase; letter-spacing:0.03em;">${c.theme || 'DNB'}</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; padding-left:2px;">
+            <span style="font-size:0.8rem; color:var(--color-primary); letter-spacing:1px;">${segmentsVisuels(prog.faits, prog.total)}</span>
+            <span style="font-size:0.65rem; font-weight:600; color:var(--text-secondary);">Progression : ${prog.faits}/${prog.total} étapes</span>
+          </div>
         `;
         bodyContent.appendChild(row);
       });
@@ -533,7 +535,6 @@ function goHome() {
   clearInterval(oralTimerInterval);
   oralTimerInterval = null;
   activerNav('nav-home');
-  construireDashboardCouverture();
   construireMenuMatieres();
 }
 
@@ -645,8 +646,9 @@ function soumettreReponse(indexChoisi, boutonClique) {
   $('explanation-text').textContent = currentQ.explication || "";
   $('quiz-next').disabled = false;
 
-  const themeConcerne = currentChapitreSelected ? currentChapitreSelected.theme : "Automatismes";
-  enregistrerLacune(themeConcerne, estCorrect);
+  const cleConcernee = currentChapitreSelected ? currentChapitreSelected.id : "automatismes_global";
+  const labelConcerne = currentChapitreSelected ? currentChapitreSelected.titre : "Automatismes";
+  enregistrerLacune(cleConcernee, estCorrect, labelConcerne);
 }
 
 $('quiz-next').onclick = () => {
@@ -654,6 +656,9 @@ $('quiz-next').onclick = () => {
   if (AppState.quiz.idx < AppState.quiz.questions.length) {
     afficherQuestion();
   } else {
+    if (AppState.quiz.chapitreId && AppState.quiz.chapitreId !== "automatismes_global") {
+      enregistrerProgression(AppState.quiz.chapitreId, 'niveau' + AppState.quiz.niveauFiltre);
+    }
     alert(`🏁 Fin de session ! Score : ${AppState.quiz.score} / ${AppState.quiz.questions.length}`);
     goHome();
   }
@@ -702,7 +707,9 @@ function ouvrirExerciceOuvert() {
     const total = document.querySelectorAll('.critere-cb').length;
     const coches = document.querySelectorAll('.critere-cb:checked').length;
     alert(`Auto-évaluation enregistrée.`);
-    enregistrerLacune(currentChapitreSelected.theme, total > 0 ? (coches / total) >= 0.6 : true);
+    enregistrerLacune(currentChapitreSelected.id, total > 0 ? (coches / total) >= 0.6 : true, currentChapitreSelected.titre);
+    enregistrerProgression(currentChapitreSelected.id, 'exercice');
+    construireMenuMatieres();
     goHome();
   };
 }
